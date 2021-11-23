@@ -8,7 +8,19 @@ body {
     font-family: 'Lora', serif;
   }
 
-.container {
+#title-bar {
+  background-image: linear-gradient(to right, rgb(34, 34, 155), rgb(6, 27, 80));
+  color: aliceblue;
+  
+}
+#search-form{
+  height : 18vh;
+  display: flex;
+  align-items: center;
+  background-color: aqua;
+  max-width: 100%;
+}
+/* .container {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -47,4 +59,4 @@ body {
     height: 15px;
     width: 15px;
     margin: 0 15px;
-  }
+  } */

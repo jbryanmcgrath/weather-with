@@ -22,16 +22,26 @@
 //             alert("Unable to connect to Weather Service");
 //         });
 // };
+
+var getWeatherBtn = document.querySelector("#getWeatherBtn")
+
+
 let weather = {
     apikey: "ecf7f3e6bec1200756438570f7b731af",
     fetchWeather: function (userInput) {
-        fetch("https://api.openweathermap.org/data/2.5/weather?q=" + userInput + "&appid=ecf7f3e6bec1200756438570f7b731af").then((response) => response.json()).then((data) => console.log(data));
+        fetch("https://api.openweathermap.org/data/2.5/weather?q=" + userInput + "&units=metric&appid=ecf7f3e6bec1200756438570f7b731af").then((response) => response.json()).then((data) => console.log(data));
     },
-
+    displayWeather: function (data) {
+        const { name } = data;
+        const { icon, description } = data.weather[0];
+        const { temp, humidity } = data.main;
+        const { speed } = data.wind;
+        console.log(name, icon, description, temp, humidity, speed);
+    }
 };
 
 
-var getWeatherBtn = document.querySelector("#getWeatherBtn")
+// var getWeatherBtn = document.querySelector("#getWeatherBtn")
 
 getWeatherBtn.addEventListener("click", (e) => {
     e.preventDefault();

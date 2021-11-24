@@ -22,10 +22,20 @@
 //             alert("Unable to connect to Weather Service");
 //         });
 // };
-
 let weather = {
     apikey: "ecf7f3e6bec1200756438570f7b731af",
-    fetchWeather: function () {
-        fetch("https://api.openweathermap.org/data/2.5/weather?q=Chattanooga&appid=ecf7f3e6bec1200756438570f7b731af").then((response) => response.json()).then((data) => console.log(data));
+    fetchWeather: function (userInput) {
+        fetch("https://api.openweathermap.org/data/2.5/weather?q=" + userInput + "&appid=ecf7f3e6bec1200756438570f7b731af").then((response) => response.json()).then((data) => console.log(data));
     },
+
 };
+
+
+var getWeatherBtn = document.querySelector("#getWeatherBtn")
+
+getWeatherBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    var userInput = document.querySelector('#location').value;
+    weather.fetchWeather(userInput);
+
+})

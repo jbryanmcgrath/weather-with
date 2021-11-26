@@ -62,9 +62,10 @@ getWeatherBtn.addEventListener("click", (e) => {
     weatherForecast.fetchWeatherForecast(userInput);
 })
 
+
 let weatherForecast = {
     apikey: "ecf7f3e6bec1200756438570f7b731af",
     fetchWeatherForecast: function (userInput) {
-        fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + userInput + "&cnt=1&units=imperial&appid=ecf7f3e6bec1200756438570f7b731af").then((response) => response.json()).then((data) => console.log(data));
+        fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + userInput + "&units=imperial&appid=ecf7f3e6bec1200756438570f7b731af").then((response) => response.json()).then((data) => console.log(data));
     }
 }

@@ -23,6 +23,14 @@
 //         });
 // };
 
+
+
+// get current weather for current city
+
+
+
+
+
 var getWeatherBtn = document.querySelector("#getWeatherBtn")
 var today = new Date();
 var dd = String(today.getDate()).padStart(2, '0');
@@ -53,19 +61,69 @@ let weather = {
 };
 
 
+
+
+// submit button for search input
+
+
 var getWeatherBtn = document.querySelector("#getWeatherBtn")
 
 getWeatherBtn.addEventListener("click", (e) => {
     e.preventDefault();
     var userInput = document.querySelector('#location').value;
     weather.fetchWeather(userInput);
-    weatherForecast.fetchWeatherForecast(userInput);
 })
 
 
-let weatherForecast = {
-    apikey: "ecf7f3e6bec1200756438570f7b731af",
-    fetchWeatherForecast: function (userInput) {
-        fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + userInput + "&units=imperial&appid=ecf7f3e6bec1200756438570f7b731af").then((response) => response.json()).then((data) => console.log(data));
-    }
+
+
+
+
+
+// Card 5 day forecast function
+
+var weatherForecast = "https://api.openweathermap.org/data/2.5/forecast?q=bend&units=imperial&appid=ecf7f3e6bec1200756438570f7b731af";
+
+
+$.ajax({
+    url: weatherForecast,
+    method: "GET"
+}).then((response) => {
+    console.log(response.list);
+})
+
+//for loop
+for (var i = 1; i < response.list.length; i = +8) {
+    response.list[i]
+    console.log(response.list[i]);
 }
+
+
+
+
+
+
+
+
+
+
+// let weatherForecast = {
+//     apikey: "ecf7f3e6bec1200756438570f7b731af",
+//     fetchWeatherForecast: function (userInput) {
+//         fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + userInput + "&units=imperial&appid=ecf7f3e6bec1200756438570f7b731af").then((response) => response.json()).then((data) => console.log(data));
+//     },
+    // displayWeatherForecast: function (data) {
+    //     const { name } = data;
+    //     const { icon, description } = data.weather[0];
+    //     const { temp, humidity } = data.main;
+    //     const { speed } = data.wind;
+    //     console.log(name, icon, description, temp, humidity, speed, today)
+    //     document.querySelector("#day-forecast-date").innerText = name + "           " + today;
+    //     document.querySelector("#day-forecast-temp").innerText = "Temp:" + temp + "F";
+    //     document.querySelector("#day-forecast-wind").innerText = "Wind :" + speed + "MPH";
+    //     document.querySelector("#day-humidity").innerText = "Humididty: " + humidity + "%";
+    //     document.querySelector("#descriptionDiv").innerText = "It's " + description;
+    //     document.querySelector("day-forecast-icon").src = "https://openweathermap.org/img/wn/" + icon + "@2x.png"
+    // }
+// }
+
